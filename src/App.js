@@ -1,4 +1,4 @@
-﻿import React, { useState, useCallback } from "react";
+import React, { useState, useCallback } from "react";
 import { parseBlob } from "music-metadata-browser";
 import { useDropzone } from "react-dropzone";
 import { Buffer } from "buffer";
