@@ -338,7 +338,7 @@ function App() {
         if (acceptedFiles.length > 0) {
             handleFileUpload(acceptedFiles[0]);
         }
-    }, []);
+    }, [handleFileUpload]);
 
     const { getRootProps, getInputProps, isDragActive } = useDropzone({
         onDrop,
@@ -374,7 +374,6 @@ function App() {
                     placeholder="Liitä linkki..."
                     value={urlInput}
                     onChange={(e) => setUrlInput(e.target.value)}
-                    className="url-input"
                 />
                 <button onClick={handleFetchByUrl}>Musicfetch-haku</button>
 
