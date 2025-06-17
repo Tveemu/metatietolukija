@@ -2,6 +2,16 @@ const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fet
 
 exports.handler = async (event) => {
     const url = event.queryStringParameters?.url;
+    const ALL_SERVICES = [
+        "amazon", "amazonMusic", "anghami", "appleMusic", "audiomack", "audius", "awa",
+        "bandcamp", "bandsintown", "beatport", "boomplay", "deezer", "discogs", "flo",
+        "gaana", "genius", "iHeartRadio", "imdb", "instagram", "itunesStore", "jioSaavn",
+        "joox", "kkbox", "lineMusic", "musicBrainz", "napster", "netease", "pandora",
+        "qobuz", "qqMusic", "sevenDigital", "shazam", "snapchat", "songkick", "soundcloud",
+        "spotify", "telmoreMusik", "threads", "ticketmaster", "tidal", "tiktok", "trebel",
+        "x", "wikipedia", "yandex", "youseeMusik", "youtube", "youtubeMusic",
+        "youtubeShorts", "tiktokMusic", "wynkMusic"
+    ].join(",");
 
     if (!url) {
         return {
@@ -11,7 +21,7 @@ exports.handler = async (event) => {
     }
 
     try {
-        const response = await fetch(`https://api.musicfetch.io/url?url=${encodeURIComponent(url)}&services=appleMusic,youtube,spotify`, {
+        const response = await fetch(`https://api.musicfetch.io/url?url=${encodeURIComponent(url)}&services=${ALL_SERVICES}`, {
             headers: {
                 'x-musicfetch-token': process.env.MUSICFETCH_TOKEN,
             },
